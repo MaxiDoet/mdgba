@@ -1,2 +1,2 @@
-# md64
-An N64 emulator
+# mdds
+An Nintendo DS emulator
