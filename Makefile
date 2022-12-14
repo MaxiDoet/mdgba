@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -Iinclude -Iinclude/system
+CFLAGS = -Iinclude -Iinclude/device
 
-src_files := src/md64.c src/system/system.c src/system/r4300.c
+src_files := src/mdds.c src/device/device.c
 
 md64: $(src_files)
-	$(CC) $(CFLAGS) $^ -o md64
+	$(CC) $(CFLAGS) $^ -o mdds

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "system.h"
+#include "device.h"
 
 int main(int argc, char **argv)
 {
@@ -29,5 +29,5 @@ int main(int argc, char **argv)
 
     printf("Loaded %s (%d bytes)\n", argv[1], rom_size);
 
-    system_load_rom(rom_buf);
+    device_load_rom(rom_buf);
 }
