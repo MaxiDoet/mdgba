@@ -17,4 +17,7 @@ typedef struct bus_t {
     uint8_t arm9_bios[0x8000];
 } bus_t;
 
+uint32_t bus_arm9_read_word(uint32_t addr);
+uint32_t bus_arm7_read_word(uint32_t addr);
+
 #endif

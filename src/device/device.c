@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -26,12 +27,14 @@ void device_init()
     /* Init CPU(s) */
     dev.arm9.type = ARM_TYPE_9;
     dev.arm9.pc = 0xFFFF0000; // Reset vector
-
+    
     dev.arm7.type = ARM_TYPE_7;
     dev.arm7.pc = 0x00000000; // Reset vector
 }
 
 void device_run()
 {
-    
+    while(true) {
+        arm_step(&dev.arm9);
+    }
 }
