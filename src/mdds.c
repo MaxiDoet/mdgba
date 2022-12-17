@@ -30,4 +30,5 @@ int main(int argc, char **argv)
     printf("Loaded %s (%d bytes)\n", argv[1], rom_size);
 
     device_load_rom(rom_buf);
+    device_run();
 }
