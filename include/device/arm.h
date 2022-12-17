@@ -1,6 +1,9 @@
 #ifndef _mdds_arm_h
 #define _mdds_arm_h
 
+#define ARM_TYPE_7 0
+#define ARM_TYPE_9 1
+
 typedef struct arm_psr_t {
     uint32_t value;
 
@@ -29,6 +32,9 @@ typedef struct arm_t {
     
     arm_psr_t cpsr;
     arm_psr_t spsr;
+
+    uint8_t type;
+    uint32_t cycles;
 } arm_t;
 
 void arm_run();
