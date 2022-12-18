@@ -1,7 +1,7 @@
 CC = gcc
-CFLAGS = -Iinclude -Iinclude/device
+CFLAGS = -Iinclude -Iinclude/gba
 
-src_files := src/mdds.c src/device/device.c src/device/arm.c src/device/bus.c
+src_files := src/mdgba.c src/gba/gba.c src/gba/arm/arm.c src/gba/bus.c
 
-md64: $(src_files)
-	$(CC) $(CFLAGS) $^ -o mdds
+mdgba: $(src_files)
+	$(CC) $(CFLAGS) $^ -o mdgba
