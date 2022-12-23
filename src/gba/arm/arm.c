@@ -4,6 +4,13 @@
 
 #include "gba.h"
 
+void arm_switch_bank(uint8_t mode)
+{
+    if (mode == ARM_REG_BANK_SYSTEM) {
+        
+    }
+}
+
 uint8_t arm_instruction_branch(uint32_t opcode)
 {
     uint32_t branch_offset = (opcode & 0x7FFFFF) * 4 + 4;
@@ -15,13 +22,17 @@ uint8_t arm_instruction_branch(uint32_t opcode)
 
 uint8_t arm_instruction_alu(uint32_t opcode)
 {
-    uint8_t alu_opcode = (opcode & 0xF00000) >> 20;
+    uint8_t alu_opcode = (opcode & 0x1E00000) >> 21;
 
     printf("ALU Opcode: %x\n", alu_opcode);
 }
 
 void arm_step()
 {
+    if (!gba.cpu.running) {
+        return;
+    }
+
     uint32_t opcode = bus_read_word(gba.cpu.pc);
 
     /* Decode condition */
@@ -61,5 +72,10 @@ void arm_step()
     } else if (opcode & ~(1 << 26) && opcode & ~(1 << 27)) {
         // ALU instruction
         arm_instruction_alu(opcode);
+    } else {
+        // Unknown instruction
+        printf("Unknown instruction\n");
+
+        gba.cpu.running = false;
     }
 }

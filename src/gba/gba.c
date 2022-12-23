@@ -15,9 +15,10 @@ void gba_init(gba_config_t config)
     printf("Loaded GBA BIOS\n");
 
     memcpy(gba.bus.rom, gba.config.rom, gba.config.rom_size);
-    //dev.arm7.pc = 0x00000000; // Reset vector
-    
-    gba.cpu.pc = 0x08000000;
+
+    gba.cpu.running = true;
+    gba.cpu.pc = 0x00000000; // Reset vector    
+    //gba.cpu.pc = 0x08000000;
 }
 
 void gba_run()
